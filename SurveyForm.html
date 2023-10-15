@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #fff;
+            width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            text-align: left;
+        }
+
+        .radio-label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Survey Form</h1>
+        <form id="surveyForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="country">Country:</label>
+            <select id="country" required>
+                <option value="" disabled selected>Select Country</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="India">India</option>
+                <option value="Germany">Germany</option>
+                <option value="Russia">Russia</option>
+                <option value="Australia">Australia</option>
+                
+            </select>
+
+            <div>
+                <label>Gender:</label>
+                <input type="radio" class="radio-label" name="gender" value="Male" required> Male
+                <input type="radio" class="radio-label" name="gender" value="Female" required> Female
+            </div>
+
+            <label for="profession">Profession:</label>
+            <input type="text" id="profession" required>
+
+
+            <label for="mobile">Mobile Number:</label>
+            <input type="tel" id="mobile" required>
+            <div>
+                <label>Is this your first time you are using products and services.</label><br>
+                <input type="radio" class="radio-label" name="gender" value="Male" required>Yes
+                <input type="radio" class="radio-label" name="gender" value="Female" required> No
+            </div>&nbsp;
+            <div>
+                <label>Would you suggest to your friends and collegues</label><br>
+                <input type="radio" class="radio-label" name="gender" value="Male" required> Yes
+                <input type="radio" class="radio-label" name="gender" value="Female" required> No
+            </div>&nbsp;
+            
+            <div>
+                <label>How satisfied with company with overall</label><br>
+                <input type="radio" class="radio-label" name="gender" value="Male" required> Satisfied
+                <input type="radio" class="radio-label" name="gender" value="Female" required> Undecided
+                <input type="radio" class="radio-label" name="gender" value="Female" required> Unsatisfied
+            </div>&nbsp;
+            
+            <div>
+                <label for="feedback">Do you have any suggestion to improve our services:</label>
+                <textarea id="feedback" rows="4" cols="50" placeholder="Your feedback here"></textarea>
+            </div>
+            
+            <button type="button" onclick="submitForm()">Submit</button>
+            <button type="button" onclick="resetForm()">Reset</button>
+        </form>
+    </div>
+
+    <div id="popup" style="display: none;">
+        <h2>Survey Results</h2>
+        <p><strong>First Name:</strong> <span id="resultFirstName"></span></p>
+        <p><strong>Last Name:</strong> <span id="resultLastName"></span></p>
+        <p><strong>Date of Birth:</strong> <span id="resultDob"></span></p>
+        <p><strong>Country:</strong> <span id="resultCountry"></span></p>
+        <p><strong>Gender:</strong> <span id="resultGender"></span></p>
+        <p><strong>Profession:</strong> <span id="resultProfession"></span></p>
+        <p><strong>Email:</strong> <span id="resultEmail"></span></p>
+        <p><strong>Mobile Number:</strong> <span id="resultMobile"></span></p>
+        <button type="button" onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        function submitForm() {
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const dob = document.getElementById("dob").value;
+            const country = document.getElementById("country").value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const profession = document.getElementById("profession").value;
+            const email = document.getElementById("email").value;
+            const mobile = document.getElementById("mobile").value;
+
+            document.getElementById("resultFirstName").textContent = firstName;
+            document.getElementById("resultLastName").textContent = lastName;
+            document.getElementById("resultDob").textContent = dob;
+            document.getElementById("resultCountry").textContent = country;
+            document.getElementById("resultGender").textContent = gender;
+            document.getElementById("resultProfession").textContent = profession;
+            document.getElementById("resultEmail").textContent = email;
+            document.getElementById("resultMobile").textContent = mobile;
+
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("surveyForm").reset();
+        }
+
+        function resetForm() {
+            document.getElementById("surveyForm").reset();
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+</body>
+</html>
+
+
